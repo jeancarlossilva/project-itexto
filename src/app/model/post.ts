@@ -1,3 +1,4 @@
+import { Blog } from './blog';
 export class Post {
 
     id: number;
@@ -11,5 +12,6 @@ export class Post {
     favoritos: number;
     comentarios: number;
     url: String;
+    blog: Blog;
 
 }

@@ -12,6 +12,7 @@ export class PostComponent implements OnInit {
 
   post = new Post();
   erro: any;
+  palavraChave: String;
 
 
   constructor(private postService: PostService) { }
@@ -32,6 +33,21 @@ export class PostComponent implements OnInit {
           console.log('Error  post \n');
           console.log(this.erro);
        });
+  }
+
+  busca() {
+    this.post = new Post();
+      this.postService.getPostsBusca(this.palavraChave).subscribe(
+        data => {
+          this.post = data;
+          console.log('Preenchendo o post \n');
+          console.log(this.post);
+        },
+         error => {
+            this.erro = error;
+            console.log('Error  post \n');
+            console.log(this.erro);
+         });
   }
 
 }

@@ -1,6 +1,14 @@
-<p-orderList [value]="post" [listStyle]="{'height':'250px'}" header="Lista de Posts" filter="filter" filterBy="titulo, resumo, blog.nome, blog.resumo, blog.autor.nome, blog.autor.miniBiografia" filterPlaceholder="Pesquise o post">
+<form>
+    <input name="inputBusca" type="text" size="30" pInputText (input)="this.palavraChave = $event.target.value" />
+
+    <button id="disabled-btn" (click)="busca()" label="Busca" pbutton="" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+        <span class="ui-button-text ui-clickable">Busca</span></button>
+
+</form>
+
+<p-orderList [value]="post" [listStyle]="{'height':'250px'}" controlsPosition="nome">
     <ng-template let-posts pTemplate="item">
-        <div class="card">
+        <div id="card" class="card">
             <a href="https://api.devall.com.br/devall-api/api/v1/post/{{posts.id}}">
                 <h2>{{posts.titulo}}</h2>
             </a>
@@ -8,6 +16,7 @@
             <div class="tooltip">Blog: {{posts.blog.nome}}
                 <span class="tooltiptext">{{posts.blog.resumo}}</span>
             </div>
+            <br/>
             <div class="tooltip">Autor: {{posts.blog.autor.nome}}
                 <span class="tooltiptext">{{posts.blog.autor.miniBiografia}}</span>
             </div>
