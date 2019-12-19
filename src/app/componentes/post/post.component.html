@@ -1,0 +1,16 @@
+<p-orderList [value]="post" [listStyle]="{'height':'250px'}" header="Lista de Posts" filter="filter" filterBy="titulo, resumo, blog.nome, blog.resumo, blog.autor.nome, blog.autor.miniBiografia" filterPlaceholder="Pesquise o post">
+    <ng-template let-posts pTemplate="item">
+        <div class="card">
+            <a href="https://api.devall.com.br/devall-api/api/v1/post/{{posts.id}}">
+                <h2>{{posts.titulo}}</h2>
+            </a>
+            <h4>Resumo: {{posts.resumo}} </h4>
+            <div class="tooltip">Blog: {{posts.blog.nome}}
+                <span class="tooltiptext">{{posts.blog.resumo}}</span>
+            </div>
+            <div class="tooltip">Autor: {{posts.blog.autor.nome}}
+                <span class="tooltiptext">{{posts.blog.autor.miniBiografia}}</span>
+            </div>
+        </div>
+    </ng-template>
+</p-orderList>
